@@ -1,0 +1,43 @@
+#contain{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('./length=1920.jpeg');
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.signup{
+    background-color: rgba(255, 255, 255, 0);
+    width: 33.5em;
+    height: 35em;
+    border-radius: 20px;
+}
+#Sign{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.sign{
+    display: block;
+    margin: auto;
+    height: 40px;
+    width: 280px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+.sub{
+    display: block;
+    margin: auto;
+    width: 9em;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+#log{
+    text-align: center;
+    color: white;
+}
+#cl:hover{
+    background-color: rgb(255, 255, 255);
+}

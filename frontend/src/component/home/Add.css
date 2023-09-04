@@ -1,0 +1,68 @@
+.Add{
+    display: block;
+    margin: auto;
+}
+.addArtical{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: left;
+    background-image: url("./addBack.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container{
+    width: 55vw;
+    height: 100vh;
+}
+#heading{
+    width: 20em;
+    font-size:1.5em;
+    height: 2em;
+    border: 0;
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+    margin-top: 3em;
+    text-align: center;
+    border-radius: 15px;
+}
+.jar{
+    display: flex;
+}
+#writer{
+    width: 15vw;
+    height: 4vh;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    border-radius: 15px;
+    text-align: center;
+    border: 0;
+    border-bottom: 2px solid black;
+}
+#subject{
+    width: 20vw;
+    height: 4vh;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    border-radius: 15px;
+    text-align: center;
+    border: 0;
+    border-bottom: 2px solid black;
+}
+#text{
+    font-size: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+#sub{
+    width: 15vw;
+    height: 5vh;
+    border-radius: 10px;
+    background-color: rgb(38, 38, 244);
+    color: white;
+    font-size: 1.3em;
+}
+#sub:hover{
+    box-shadow: 5px 3px 5px black;
+    font-weight: bolder;
+}

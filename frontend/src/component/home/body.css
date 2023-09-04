@@ -1,0 +1,25 @@
+.body{
+    display: flex;
+    width: 100vw;
+   justify-content: center;
+}
+.content{
+    width: 80vw;
+    background-color: red;
+    padding: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.header{
+    text-align: center;
+}
+.container{
+    margin: 10px;
+}
+.date{
+    text-align: right;
+    margin-top: 0;
+}
+.writer{
+    margin-bottom: 0;
+}

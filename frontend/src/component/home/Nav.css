@@ -1,0 +1,64 @@
+.navbar{
+    display: block;
+    width: 100vw;
+    height:6em;
+    background-color: rgb(237, 106, 231);
+}
+ul{
+    display:flex ;
+    float: right;
+   
+}
+li{
+    margin-top: 20px;
+    margin-right: 3em;
+    font-size: 25px;
+    list-style: none;
+}
+li:hover{
+    background-color: black;
+    color: white;
+}
+#searching{
+    font-size: 24px;
+}
+.search{
+    margin-right: 0;
+    border-radius: 10px;
+    border-right: 0px;
+}
+.searchButton{
+    background-color: white;
+    border: 0;
+    background-color:rgb(237, 106, 231);
+    margin-left: 3px;
+}
+.float{
+    width: 8rem;
+    height: 9rem;
+    position: relative;
+    top: 6em;
+    left: 91vw;
+    background-color: red;
+}
+.add{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 1.5em;
+}
+.Edit{
+    margin-left: 1.5em;
+}
+#Hom,#Ad{
+    text-decoration: none;
+    color: black;
+}
+#Hom:hover{
+    background-color: black;
+    color: white;
+}
+#Ad:hover{
+    background-color: black;
+    color: white;
+}
+
