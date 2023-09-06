@@ -6,6 +6,7 @@ import ADD from './component/home/AddArtical';
 // import Signup from './component/signup/Signup';
 import { Routes, Route } from 'react-router-dom';
 function App() {
+
   return (
     <div className="App">
       <Nav />

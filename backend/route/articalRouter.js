@@ -1,5 +1,5 @@
 const express = require('express');
-const { createArtical, updateArtical, DeleteArtical, getAllData } = require('../controller/artical');
+const { createArtical, updateArtical, DeleteArtical, getAllData, search } = require('../controller/artical');
 
 const router = express.Router();
 
@@ -15,6 +15,8 @@ router.route('/artical/:id').put(updateArtical);
 //getall artical ---(every one)
 router.route('/').get(getAllData);
 
+//search artical
+router.route('/artical/:key').get(search)
 
 
 module.exports = router

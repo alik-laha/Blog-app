@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+
 
 import './Nav.css'
 let Nav = () => {
@@ -14,23 +15,42 @@ let Nav = () => {
             setDisplay('none')
         }
     }
-    return (
-        <div className="navbar">
-            <ul>
-                <li className='home'>
-                    <Link id='Hom' className='ch' to='/'>Home</Link>
-                </li>
-                <li className='search'><input type="text" name='search' placeholder='Search aricals' id='searching' /></li>
-                <li className='searchButton'><FontAwesomeIcon icon={faMagnifyingGlass} /></li>
-                <li className='tripleDot' onClick={handale} ><FontAwesomeIcon icon={faBars} /></li>
-            </ul>
-            <div className="float" style={{ display: display }}>
-                <div className="add">
-                    <Link to='/add' id='Ad' className='ch' > Add artical</Link>
 
-                </div>
-                <div className="Edit">
-                    Edit Profile
+
+    //need to thinnk about display search element in Body
+    const handleCh = async (e) => {
+        let key = e.target.value;
+        if (key) {
+            let result = await fetch(`http://127.0.0.1:7000/api/v1/artical/${key}`);
+            result = await result.json();
+
+            result.data.forEach(Data => {
+                for (let value in Data) {
+                    console.log(`${Data[value]}`)
+                }
+            })
+        }
+    }
+
+    return (
+        <div className="whole">
+            <div className="navbar">
+                <ul>
+                    <li id='home'>
+                        <NavLink id='Hom' to='/'>Home</NavLink>
+                    </li>
+                    <li className='search'><input type="text" name='search' placeholder='Search aricals' id='searching' onChange={handleCh} /></li>
+                    {/* <li className='searchButton'><FontAwesomeIcon icon={faMagnifyingGlass} /></li> */}
+                    <li className='tripleDot' onClick={handale} ><FontAwesomeIcon icon={faBars} /></li>
+                </ul>
+                <div className="float" style={{ display: display }}>
+                    <div id="add">
+                        <NavLink to='/add' id='Ad' > Add artical</NavLink>
+
+                    </div>
+                    <div className="Edit">
+                        Edit Profile
+                    </div>
                 </div>
             </div>
         </div>

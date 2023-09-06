@@ -84,12 +84,32 @@ exports.getAllData = async (req, res, next) => {
         res.status(200)
         res.send({ status: "ok", data: artical })
     } catch (error) {
-        res.status(500).json({
+        res.status(404).json({
             sucess: false,
             masage: "a error ocured while fatching data",
             error: error.message
         })
 
+    }
+}
+//for searching api
+exports.search = async (req, res, next) => {
+    try {
+        const data = await ARTICAL.find({
+            '$or': [
+                { writer: { $regex: req.params.key } },
+                { header: { $regex: req.params.key } },
+                { subject: { $regex: req.params.key } }
+            ]
+        });
+        res.status(200);
+        res.send({ status: 'ok', data: data })
+    } catch (error) {
+        res.status(404).json({
+            sucess: false,
+            masage: "a error ovured while searching",
+            error: error.masage
+        });
     }
 }
 

@@ -42,6 +42,7 @@ let ADD = () => {
                         <input type="text" className="Add" id="subject" name="subject" placeholder="Subject of Writing" value={subject} onChange={getSubject} />
                     </div>
                     <textarea name="content" className="Add" id="text" cols="70" rows="25" value={content} onChange={getContent} placeholder="content" ></textarea>
+                    <input type="file" name="images" id="img" className="Add" />
                     <input type="submit" placeholder="Submit" className="Add" id="sub" />
                 </form>
             </div>

@@ -5,7 +5,7 @@
 }
 .content{
     width: 80vw;
-    background-color: red;
+    background-color:white;
     padding: 5px;
     padding-left: 40px;
     padding-right: 40px;
@@ -22,4 +22,13 @@
 }
 .writer{
     margin-bottom: 0;
+}
+.switch{
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+}
+.body{
+    background-color:rgb(219, 239, 219);
 }

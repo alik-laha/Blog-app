@@ -66,3 +66,10 @@
     box-shadow: 5px 3px 5px black;
     font-weight: bolder;
 }
+#img{
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+.container{
+    margin-left: 3em;
+}
