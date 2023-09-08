@@ -2,10 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import HandleFetch from '../../utils/handleFetch'
+import './Navbar.css'
 
-
-import './Nav.css'
-let Nav = () => {
+let Nav = (props) => {
     const [display, setDisplay] = useState('none')
     function handale() {
         if (display === 'none') {
@@ -17,18 +17,16 @@ let Nav = () => {
     }
 
 
-    //need to thinnk about display search element in Body
+    //need to display searched element in Body
     const handleCh = async (e) => {
         let key = e.target.value;
         if (key) {
-            let result = await fetch(`http://127.0.0.1:7000/api/v1/artical/${key}`);
-            result = await result.json();
-
-            result.data.forEach(Data => {
-                for (let value in Data) {
-                    console.log(`${Data[value]}`)
-                }
-            })
+            let result = await HandleFetch(`/api/v1/artical/${key}`);
+            //sending data to perent component
+            props.onchange(result.data);
+        }
+        else {
+            console.log('nodata')
         }
     }
 
@@ -39,7 +37,7 @@ let Nav = () => {
                     <li id='home'>
                         <NavLink id='Hom' to='/'>Home</NavLink>
                     </li>
-                    <li className='search'><input type="text" name='search' placeholder='Search aricals' id='searching' onChange={handleCh} /></li>
+                    <li className='search' ><input type="text" name='search' placeholder='Search aricals' id='searching' onChange={handleCh} /></li>
                     {/* <li className='searchButton'><FontAwesomeIcon icon={faMagnifyingGlass} /></li> */}
                     <li className='tripleDot' onClick={handale} ><FontAwesomeIcon icon={faBars} /></li>
                 </ul>

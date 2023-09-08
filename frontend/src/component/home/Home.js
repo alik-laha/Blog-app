@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import './body.css'
-let Home = () => {
+import HandleFetch from "../../utils/handleFetch";
+import './Home.css';
 
+
+let Home = (props) => {
     //storing data from database
     const [data, setData] = useState([])
 
-
-    //fetching data from database
-    useEffect(() => {
-        fetch('http://127.0.0.1:7000/api/v1', {
-            method: "GET"
-        }).then((res) => res.json())
+    //fatching function for geting data
+    let dataFatch = () => {
+        HandleFetch('/api/v1')
             .then((data) => {
                 setData(data.data)
             }).catch((error) => {
@@ -18,9 +17,12 @@ let Home = () => {
                     console.log("check the backend", error)
                 }
             });
+    }
+
+    //calling the fatching funcation
+    useEffect(() => {
+        dataFatch();
     }, [])
-
-
     return (
         <div className="body">
             <div className="content">

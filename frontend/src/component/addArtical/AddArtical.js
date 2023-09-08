@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './Add.css'
+import './AddArtical.css'
 import axios from "axios";
 
 let ADD = () => {
