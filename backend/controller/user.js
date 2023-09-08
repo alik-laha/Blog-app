@@ -46,16 +46,21 @@ exports.Login = async (req, res, next) => {
     const { email, password } = req.body;
     User.findOne({ email: email })
         .then((user) => {
-            if (user) {
-                if (user.password === password) {
+
+            if (!user) {
+                return res.json('check the email')
+            }
+            bcrypt.compare(password, user.password, (err, data) => {
+                if (err) {
+                    throw err
+                }
+                if (data) {
                     res.json('success')
                 }
                 else {
                     res.json("check the password")
                 }
-            }
-            else {
-                res.json("check the email")
-            }
+            })
+
         })
 }
