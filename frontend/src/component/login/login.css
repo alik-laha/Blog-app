@@ -1,5 +1,5 @@
 .add{
-    background-image: url('./loginback.jpg');
+    background-image: url('/src/assets/loginback.jpg');
     width: 100vw;
     background-repeat: no-repeat;
     background-size: cover;

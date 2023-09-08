@@ -1,7 +1,7 @@
 #contain{
     width: 100vw;
     height: 100vh;
-    background-image: url('./length=1920.jpeg');
+    background-image: url('/src/assets/length=1920.jpeg');
     display: flex;
     align-items: center;
     justify-content: left;

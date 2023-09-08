@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import HandleFetch from '../../utils/handleFetch'
@@ -38,7 +38,7 @@ let Nav = (props) => {
                         <NavLink id='Hom' to='/'>Home</NavLink>
                     </li>
                     <li className='search' ><input type="text" name='search' placeholder='Search aricals' id='searching' onChange={handleCh} /></li>
-                    {/* <li className='searchButton'><FontAwesomeIcon icon={faMagnifyingGlass} /></li> */}
+                    <li className='searchButton'><FontAwesomeIcon icon={faMagnifyingGlass} /></li>
                     <li className='tripleDot' onClick={handale} ><FontAwesomeIcon icon={faBars} /></li>
                 </ul>
                 <div className="float" style={{ display: display }}>

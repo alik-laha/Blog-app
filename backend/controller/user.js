@@ -1,14 +1,30 @@
 const User = require('../model/userModel')
+const bcrypt = require('bcryptjs')
 
 
 //create user--(evryone)
 exports.creatUser = async (req, res, next) => {
     try {
-        const user = await User.create(req.body)
+        const { name, email, phoneno, password } = req.body;
+        if (!(email, phoneno, name, password)) {
+            res.status(400).send("all input is required")
+        }
+        const old = await User.findOne({ email })
+        if (old) {
+            return res.status(409).send("user already exist try with other email")
+        }
+        const pass = await bcrypt.hash(password, 10);
+        const user = await User.create({
+            name: name,
+            phoneNo: phoneno,
+            email: email.toLowerCase(),
+            password: pass
+        })
         res.status(201).json({
             sucess: true,
             masage: 'your profile hs been created'
         })
+
     } catch (error) {
         res.status(500).json({
             success: false,
