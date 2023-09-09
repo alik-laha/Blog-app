@@ -18,7 +18,11 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, "insert your Password"]
+        required: [true, "insert your Password"],
+        minLength: 8
+    },
+    token: {
+        type: String
     }
 })
 module.exports = mongoose.model("user", userSchema)

@@ -6,7 +6,7 @@ let ADD = () => {
     const [header, setHeader] = useState("")
     const [writer, setWriter] = useState("")
     const [subject, setSubject] = useState("")
-    const [content, setcontent] = useState("")
+    const [content, setContent] = useState("")
     let getHeader = (e) => {
         setHeader(e.target.value)
     }
@@ -17,7 +17,7 @@ let ADD = () => {
         setSubject(e.target.value)
     }
     let getContent = (e) => {
-        setcontent(e.target.value)
+        setContent(e.target.value)
     }
     let newArtical = (e) => {
         e.preventDefault();

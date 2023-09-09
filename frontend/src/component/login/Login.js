@@ -19,11 +19,8 @@ let Login = () => {
                 if (result.data === "success") {
                     console.log("all done");
                 }
-                else if (result.data === "check the password") {
-                    console.log("passwoard is incorrect")
-                }
                 else {
-                    console.log("check the email")
+                    console.log("invalid cradentials")
                 }
             })
             .catch((err) => console.log(err));

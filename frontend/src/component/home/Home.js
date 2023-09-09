@@ -3,12 +3,12 @@ import HandleFetch from "../../utils/handleFetch";
 import './Home.css';
 
 
-let Home = (props) => {
+let Home = () => {
     //storing data from database
     const [data, setData] = useState([])
 
-    //fatching function for geting data
-    let dataFatch = () => {
+    //fetching function for gating data
+    let dataFetch = () => {
         HandleFetch('/api/v1')
             .then((data) => {
                 setData(data.data)
@@ -19,9 +19,9 @@ let Home = (props) => {
             });
     }
 
-    //calling the fatching funcation
+    //calling the fetch function
     useEffect(() => {
-        dataFatch();
+        dataFetch();
     }, [])
     return (
         <div className="body">
