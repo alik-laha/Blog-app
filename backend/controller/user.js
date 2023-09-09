@@ -28,11 +28,9 @@ exports.creatUser = async (req, res) => {
         }
         );
 
-        user.token = token
+        user.token = token;
 
-        res.status(201).json({
-          mesage:"data to store for authentivation"
-        })
+        res.status(201).send(user)
 
     } catch (error) {
         res.status(403).json({
@@ -58,7 +56,7 @@ exports.Login = async (req, res, next) => {
 
         res.status(400).send("need all information")
     }
-    const user =await User.findOne({email,})
+    const user =await User.findOne({email})
 
     if (user &&(await bcrypt.compare(password,user.password))){
 
@@ -70,8 +68,11 @@ exports.Login = async (req, res, next) => {
 
         user.token = token
 
-        return res.status(200).json("success")
+        return res.status(200).send(user)
 
     }
-    return res.status(400).json("invalid cradentials")
+    else{
+
+        return res.status(400).json("invalid cradentials")
+    }
 }

@@ -21,9 +21,9 @@ let Login = () => {
         e.preventDefault();
         axios.post('http://127.0.0.1:7000/api/v1/login', { email, password })
             .then((result) => {
-                if (result.data === "success") {
-                   let data="all done";
-                    localStorage.setItem("user",JSON.stringify(data))
+                if (result.data.token) {
+                    localStorage.setItem("user",JSON.stringify(result.data))
+                    localStorage.setItem("token",JSON.stringify(result.data.token))
                     Navigater('/');
                 }
                 else {

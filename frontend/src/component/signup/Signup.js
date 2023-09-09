@@ -38,10 +38,9 @@ let Signup = () => {
 
                 .then((result) => {
 
-                    if (result.status === 201) {
-                        console.log("profile has been created");
-
+                    if (result.data.token) {
                         localStorage.setItem("user",JSON.stringify(result.data));
+                        localStorage.setItem("token",JSON.stringify(result.data.token));
 
                         Navigater('/');
                     }
