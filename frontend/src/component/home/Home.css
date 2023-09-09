@@ -6,7 +6,7 @@
 }
 .content{
     width: 80vw;
-    background-color:white;
+    background-color:rgb(219, 239, 219);
     padding: 5px;
     padding-left: 40px;
     padding-right: 40px;
@@ -29,6 +29,7 @@
     border-radius: 20px;
     margin-bottom: 20px;
     padding: 30px;
+    background-color: white;
 }
 .body{
     background-color:rgb(219, 239, 219);

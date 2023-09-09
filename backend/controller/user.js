@@ -27,11 +27,11 @@ exports.creatUser = async (req, res) => {
             expiresIn: "5h"
         }
         );
+
         user.token = token
 
         res.status(201).json({
-            sucess: true,
-            masage: 'your profile has been created'
+          mesage:"data to store for authentivation"
         })
 
     } catch (error) {
@@ -53,16 +53,23 @@ exports.updateUser = async (req, res, next) => {
 //for login
 exports.Login = async (req, res, next) => {
     const { email, password } = req.body;
+
     if(!(email && password)){
+
         res.status(400).send("need all information")
     }
     const user =await User.findOne({email,})
+
     if (user &&(await bcrypt.compare(password,user.password))){
+
         const token = jwt.sign({ user_id: user._id, email }, process.env.TOKEN_KEY, {
+
                 expiresIn: "5h"
             }
         );
+
         user.token = token
+
         return res.status(200).json("success")
 
     }

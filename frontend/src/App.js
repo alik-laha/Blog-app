@@ -1,11 +1,21 @@
 import './App.css';
+
 import Nav from './component/navbar/Navbar';
+
 import Body from './component/home/Home';
+
 import ADD from './component/addArtical/AddArtical';
+
 import Login from './component/login/Login';
+
 import Signup from './component/signup/Signup';
-import { Routes, Route } from 'react-router-dom';
+
+import { Routes, Route,BrowserRouter } from 'react-router-dom';
+
 import { useState } from 'react';
+
+import PrivateComponent from "./component/private/PrivateComp";
+
 function App() {
 
   const [data, setData] = useState('')
@@ -19,14 +29,17 @@ function App() {
 
   return (
     <div className="App">
-      <Nav onchange={getData} />
-      <Routes>
+        <BrowserRouter>
+            <Nav onchange={getData} />
+         <Routes>
+          <Route element={<PrivateComponent/>}>
           <Route path='/' element={<Body data={data} />} />
           <Route path='/add' element={<ADD />} />
+          </Route>
           <Route path='/sign-up' element={<Signup />} />
           <Route path='/log-in' element={ <Login />} />
       </Routes>
-
+        </BrowserRouter>
     </div>
   );
 }

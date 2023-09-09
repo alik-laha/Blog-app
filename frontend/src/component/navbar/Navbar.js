@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink,useNavigate } from 'react-router-dom'
 import HandleFetch from '../../utils/handleFetch'
 import './Navbar.css'
 
@@ -30,12 +30,19 @@ let Nav = (props) => {
         }
     }
 
+    const navigate=useNavigate();
+    const logout=()=>{
+        localStorage.clear();
+        navigate('/sign-up')
+    }
+
+    const auth=localStorage.getItem('user');
     return (
         <div className="whole">
             <div className="navbar">
                 <ul>
                     <li id='home'>
-                        <NavLink id='Hom' to='/'>Home</NavLink>
+                        <NavLink to='/'>Home</NavLink>
                     </li>
                     <li className='search' ><input type="text" name='search' placeholder='Search aricals' id='searching' onChange={handleCh} /></li>
                     <li className='searchButton'><FontAwesomeIcon icon={faMagnifyingGlass} /></li>
@@ -43,11 +50,14 @@ let Nav = (props) => {
                 </ul>
                 <div className="float" style={{ display: display }}>
                     <div id="add">
-                        <NavLink to='/add' id='Ad' > Add artical</NavLink>
-
+                        <NavLink to='/add' > Add artical</NavLink>
                     </div>
                     <div className="Edit">
                         Edit Profile
+                    </div>
+                    <div className='lo'>
+                        { auth? <NavLink onClick={logout} to='/sign-up'>Logout</NavLink> :
+                        <NavLink to='/sign-up'>Login/signup</NavLink>}
                     </div>
                 </div>
             </div>

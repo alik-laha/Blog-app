@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./signup.css"
-import {useNavigate} from "react-router-dom"
+import {useNavigate,NavLink} from "react-router-dom"
 
 let Signup = () => {
     const [name, setName] = useState("")
@@ -33,11 +33,16 @@ let Signup = () => {
     let sendData = (e) => {
         e.preventDefault();
         if(password===confirm) {
+
             axios.post('http://127.0.0.1:7000/api/v1/sign-up', {name, phoneNo, email, password})
+
                 .then((result) => {
 
                     if (result.status === 201) {
                         console.log("profile has been created");
+
+                        localStorage.setItem("user",JSON.stringify(result.data));
+
                         Navigater('/');
                     }
                 })
@@ -49,21 +54,25 @@ let Signup = () => {
             console.log("check the password")
         }
     }
-
-
+    useEffect(() => {
+        const auth=localStorage.getItem('user');
+        if(auth){
+            Navigater('/')
+        }
+    });
     return (
         <div id="contain">
             <div className="signup">
                 <h1 id="Sign">Sign up</h1>
                 <form onSubmit={sendData} id="mean">
-                    <input type="text" name="name" className="sign" placeholder="Your name" value={name} onChange={getName} />
-                    <input type="number" name="phoneNum" className="sign" placeholder="Your phone number" value={phoneNo} onChange={getPhoneNo} />
-                    <input type="email" name="email" className="sign" placeholder="Your email" value={email} onChange={getEmail} />
-                    <input type="password" name="password" className="sign" placeholder="Password" value={password} onChange={getPassword} />
-                    <input type="password" name="confirm" className="sign" placeholder="confirmPassword" value={confirm} onChange={getConfirm} />
+                    <input type="text" name="name" className="sig" placeholder="Your name" value={name} onChange={getName} />
+                    <input type="number" name="phoneNum" className="sig" placeholder="Your phone number" value={phoneNo} onChange={getPhoneNo} />
+                    <input type="email" name="email" className="sig" placeholder="Your email" value={email} onChange={getEmail} />
+                    <input type="password" name="password" className="sig" placeholder="Password" value={password} onChange={getPassword} />
+                    <input type="password" name="confirm" className="sig" placeholder="confirmPassword" value={confirm} onChange={getConfirm} />
                     <input type="submit" name="submit" className="sub" />
                 </form>
-                <p id="log">Already have an account <a id="cl" href="#">click here</a></p>
+                <p id="log">Already have an account <NavLink to='/log-in'>click here</NavLink></p>
             </div>
         </div>
     )

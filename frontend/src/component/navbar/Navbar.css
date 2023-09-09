@@ -25,10 +25,9 @@ li:hover{
 .search{
     margin-right: 0;
     border-radius: 10px;
-    border-right: 0px;
+    border-right: 0;
 }
 .searchButton{
-    background-color: white;
     border: 0;
     background-color:rgb(237, 106, 231);
     margin-left: 3px;
@@ -42,27 +41,57 @@ li:hover{
     background-color: red;
 }
 #add{
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     margin-top: 20px;
     margin-left: 1.5em;
 }
 .Edit{
     margin-left: 1.5em;
+    margin-bottom: 15px;
 }
-#Hom,#Ad{
+.edit a{
+
+}
+
+#home a {
     text-decoration: none;
-    color: white;
+    color: black;
     font-weight:bolder;
 }
-#Hom:hover{
+
+#home .active{
     background-color: black;
     color: white;
 }
-#Ad:hover{
+
+#add a{
+    text-decoration: none;
+    color: black;
+    font-weight:bolder;
+}
+#home a:hover{
     background-color: black;
     color: white;
 }
-.active{
+#add a:hover{
+    background-color: black;
+    color: white;
+}
+#add .active{
+    background-color: black;
+    color: white;
+}
+.lo{
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.lo a{
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+.lo a:hover{
     background-color: black;
     color: white;
 }
