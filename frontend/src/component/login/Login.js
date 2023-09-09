@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import './login.css'
+import {useNavigate} from "react-router-dom"
+
 let Login = () => {
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
+
+    let Navigater=useNavigate();
+
     let getemail = (e) => {
         setemail(e.target.value);
     }
@@ -18,6 +23,8 @@ let Login = () => {
             .then((result) => {
                 if (result.data === "success") {
                     console.log("all done");
+                    
+                    Navigater('/');
                 }
                 else {
                     console.log("invalid cradentials")

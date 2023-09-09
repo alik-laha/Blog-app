@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import "./signup.css"
 import {useNavigate} from "react-router-dom"
+
 let Signup = () => {
     const [name, setName] = useState("")
     const [phoneNo, setPhoneNo] = useState("")
@@ -10,6 +11,7 @@ let Signup = () => {
     const [confirm, setConfirm] = useState("")
 
     let Navigater=useNavigate();
+
     let getName = (e) => {
         setName(e.target.value);
     }
