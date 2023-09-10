@@ -37,9 +37,9 @@ let Login = () => {
             <div className="login">
                 <h1>Log-in</h1>
                 <form onSubmit={checkData} >
-                    <input type="email" name="email" placeholder="Type your email" className="input log" value={email} onChange={getemail} />
-                    <input type="password" name="password" placeholder="Type your Passwoard" className="input log" value={password} onChange={getpassword} />
-                    <input type="submit" name="" id="submit" className="log" />
+                    <input type="email" name="email" placeholder="Type your email" className="input log" autocomplete="off" value={email} onChange={getemail} />
+                    <input type="password" name="password" placeholder="Type your Passwoard" className="input log" autocomplete="off" value={password} onChange={getpassword} />
+                    <input type="submit" name="" id="submit" className="log" autocomplete="off" />
                     <p className="sign" >i dont have an acount <NavLink to='/sign-up'>Creat one</NavLink></p>
                 </form>
             </div>

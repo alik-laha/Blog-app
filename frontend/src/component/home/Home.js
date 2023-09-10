@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import HandleFetch from "../../utils/handleFetch";
+// import HandleFetch from "../../utils/handleFetch";
 import './Home.css';
 
 
@@ -9,16 +9,15 @@ let Home = () => {
 
     //fetching function for gating data
     let dataFetch = () => {
-        HandleFetch('/api/v1')
+        fetch('api/v1', { headers: {Authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}` } })
+            .then((res) => res.json())
             .then((data) => {
-                setData(data.data)
-            }).catch((error) => {
-                if (error) {
-                    console.log("check the backend", error)
-                }
+                setData(data.data);
+            })
+            .catch((error) => {
+                console.log("check the backend", error);
             });
-    }
-
+    };
     //calling the fetch function
     useEffect(() => {
         dataFetch();
