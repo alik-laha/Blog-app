@@ -76,8 +76,8 @@ exports.DeleteArtical = async (req, res, next) => {
     }
 }
 
-
 //get all data
+
 exports.getAllData = async (req, res, next) => {
     try {
         const artical = await ARTICAL.find({})

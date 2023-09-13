@@ -13,10 +13,10 @@ router.delete('/artical/:id',Varify,DeleteArtical);
 router.put('/artical/:id',Varify,updateArtical);
 
 //getall artical ---(every one)
-router.get('/',Varify,getAllData);
+router.route('/',Varify).get(getAllData);
 
 //search artical
-router.route('/artical/:key',Varify,search)
+router.route('/artical/:key').get(search)
 
 
 module.exports = router

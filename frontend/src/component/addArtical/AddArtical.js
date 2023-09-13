@@ -21,7 +21,7 @@ let ADD = () => {
     }
     let newArtical = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:7000/api/v1/artical/new', { header, writer, content, subject })
+        axios.post('http://127.0.0.1:7000/api/v1/artical/new', { header, writer, content, subject },{ headers: {Authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}` } })
             .then((result) => {
                 if (result.sucess === "true") {
                     console.log("all data has been pushed");
