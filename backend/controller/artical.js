@@ -6,8 +6,7 @@ exports.createArtical = async (req, res, next) => {
     try {
         const artical = await ARTICAL.create(req.body)
         res.status(201).json({
-            sucess: "true",
-            artical
+            sucess: "true"
         })
     } catch (error) {
         res.status(500).json({

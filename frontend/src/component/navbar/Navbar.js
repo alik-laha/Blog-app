@@ -6,6 +6,7 @@ import HandleFetch from '../../utils/handleFetch'
 import './Navbar.css'
 
 let Nav = (props) => {
+    const navigate=useNavigate();
     const [display, setDisplay] = useState('none')
     function handale() {
         if (display === 'none') {
@@ -14,24 +15,24 @@ let Nav = (props) => {
         else {
             setDisplay('none');
         }
+
+
     }
 
-
     //fatching from search api && searched element transport to parent component
-
     const handleCh = async (e) => {
         let key = e.target.value;
         if (key) {
             let result = await HandleFetch(`/api/v1/artical/${key}`);
             //sending data to perent component
             props.onchange(result.data,key);
+            navigate("/search")
         }
         else {
-            console.warn("nodatafound")
+            navigate('/')
         }
-    }
 
-    const navigate=useNavigate();
+    }
     const logout=()=>{
         localStorage.clear();
         navigate('/sign-up')

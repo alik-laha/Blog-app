@@ -95,3 +95,60 @@ li:hover{
     background-color: black;
     color: white;
 }
+
+ /*for mobile setup*/
+@media screen and (max-width: 650px) {
+    #searching{
+        font-size: 20px;
+    }
+    li{
+        font-size: 20px;
+    }
+    .float{
+       background-color: red;
+        z-index: 20;
+        left: 0;
+        position: fixed;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+    .navbar{
+        display: block;
+        position: fixed;
+        width: 100vw;
+        height:6em;
+        background-color: rgb(237, 106, 231);
+        z-index: 20;
+    }
+    .tripleDot{
+        margin-right: 25px;
+    }
+    .search{
+        margin-right: 15px;
+    }
+    #home{
+        margin-right: 15px;
+    }
+    #add{
+        display: block;
+        text-align: center;
+        margin-bottom: 1.5em;
+        margin-top: 1.5em;
+        font-size: 25px;
+    }
+    .Edit{
+        display: block;
+        text-align: center;
+        margin-bottom: 1.5em;
+        margin-top: 1.5em;
+        font-size: 25px;
+    }
+.lo{
+    display: block;
+    text-align: center;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+    font-size: 25px;
+}
+}

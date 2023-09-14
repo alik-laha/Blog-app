@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './AddArtical.css'
 import axios from "axios";
+import {useNavigate}from 'react-router-dom'
 
 let ADD = () => {
     const [header, setHeader] = useState("")
@@ -19,19 +20,19 @@ let ADD = () => {
     let getContent = (e) => {
         setContent(e.target.value)
     }
+    let navigate= useNavigate()
     let newArtical = (e) => {
         e.preventDefault();
         axios.post('http://127.0.0.1:7000/api/v1/artical/new', { header, writer, content, subject },{ headers: {Authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}` } })
             .then((result) => {
-                if (result.sucess === "true") {
-                    console.log("all data has been pushed");
-                }
+                navigate('/')
             })
             .catch((error) => {
                 console.log(error);
             })
 
     }
+
     return (
         <div className="addArtical">
             <div className="container">
