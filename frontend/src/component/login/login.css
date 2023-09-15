@@ -45,3 +45,19 @@ h1{
 .sign{
     text-align: center;
 }
+@media screen and (max-width: 650px) {
+    .login{
+        font-size: 1em;
+        width: 22rem;
+        height: 30rem;
+    }
+    .h1{
+        font-size: 25px;
+    }
+    #submit{
+        font-size: 12px;
+    }
+    .input{
+        font-size: 1em;
+    }
+}

@@ -41,3 +41,8 @@
 #cl:hover{
     background-color: rgb(255, 255, 255);
 }
+@media screen and (max-width: 650px) {
+    .sig{
+        font-size: 1em;
+    }
+}

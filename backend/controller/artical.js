@@ -81,7 +81,7 @@ exports.getAllData = async (req, res, next) => {
     try {
         const artical = await ARTICAL.find({})
         res.status(200)
-        res.send({ status: "ok", data: artical })
+        res.send({ data: artical })
     } catch (error) {
         res.status(404).json({
             sucess: false,
@@ -91,6 +91,30 @@ exports.getAllData = async (req, res, next) => {
 
     }
 }
+
+//get a artical
+exports.getOne = async (req, res, next) => {
+    try {
+        const artical = await ARTICAL.findById(req.params.id)
+        if(artical) {
+            res.status(200)
+            res.send({data: artical})
+        }
+        else{
+            res.status(404).json({
+                sucess: false,
+                massage: "artical not found"
+            })
+        }
+    } catch {
+        res.status(404).json({
+            sucess: false,
+            masage: "a error ocured while fatching data",
+            error: error.message
+        })
+    }
+}
+
 //for searching api
 exports.search = async (req, res, next) => {
     try {

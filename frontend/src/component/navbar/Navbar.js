@@ -25,7 +25,7 @@ let Nav = (props) => {
         if (key) {
             let result = await HandleFetch(`/api/v1/artical/${key}`);
             //sending data to perent component
-            props.onchange(result.data,key);
+            props.onkeydown(result.data,key);
             navigate("/search")
         }
         else {
