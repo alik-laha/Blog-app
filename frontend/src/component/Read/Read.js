@@ -13,7 +13,7 @@ let Read=(props)=>{
     }
     useEffect(() => {
         fetching()
-    }, []);
+    });
     if(Data!=="alik"){
         return(
             <>
@@ -30,7 +30,7 @@ let Read=(props)=>{
         )
     }
     else{
-        <p>somthing is bad plz reload</p>
+        <p>somthing is bad plz go back and return again</p>
     }
 
 }

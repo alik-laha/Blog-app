@@ -43,9 +43,40 @@ exports.creatUser = async (req, res) => {
 
 //update user details--(only user)
 exports.updateUser = async (req, res, next) => {
-    const user = await User.findByIdAndUpdate(req.params.id)
+    let { name, email, phoneNo, oldPassword,password } = req.body;
+
+    const old=await User.findOne({email});
+
+    if(old){
+       return res.status(409).send("user already exist")
+    }
+    const find=await User.findById(req.params.id)
+
+    let pas;
+    if(oldPassword && password) {
+        if (find && (await bcrypt.compare(oldPassword, find.password))) {
+            pas = await bcrypt.hash(password, 10);
+            password=pas;
+        } else {
+            return res.status(409).send("check the password")
+        }
+    }
+    else if(oldPassword && !password){
+        return res.status(405).send("plz include newPassword")
+    }
+    else{
+        return res.status(405).send("plz include oldPassword")
+    }
+    const user = await User.findByIdAndUpdate(req.params.id,{name,email,phoneNo,password})
     if (!user) {
-        user
+       return res.status(404).json({
+            message:"no user found"
+        })
+    }
+    else{
+        res.status(200).json({
+            message:"done updating"
+        })
     }
 }
 //for login
