@@ -1,0 +1,25 @@
+.contents{
+    background-color: rgba(255, 255, 255, 0.38);
+    width: 80vw;
+    height: 90vh;
+    border: 2px solid black;
+    border-radius: 18px;
+    padding: 20px;
+
+}
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("https://media.geeksforgeeks.org/wp-content/uploads/rk.png");
+}
+.writers{
+    margin-bottom: 2em;
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+.cont{
+    font-size: 1.2em;
+}

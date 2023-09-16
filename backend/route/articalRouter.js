@@ -1,6 +1,7 @@
 const express = require('express');
 const { createArtical, updateArtical, DeleteArtical, getAllData, search, getOne} = require('../controller/artical');
 const Varify =require('../config/auth')
+
 const router = express.Router();
 
 //creat a artical--(every one)
@@ -16,7 +17,7 @@ router.put('/artical/:id',Varify,updateArtical);
 router.route('/',Varify).get(getAllData);
 
 //search artical
-router.route('/artical/:key').get(search)
+router.route('/artical/:key',Varify).get(search)
 
 //get one artical to read
 router.route('/read/:id',Varify).get(getOne);
