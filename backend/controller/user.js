@@ -43,42 +43,42 @@ exports.creatUser = async (req, res) => {
 
 //update user details--(only user)
 exports.updateUser = async (req, res, next) => {
-    let { name, email, phoneNo, oldPassword,password } = req.body;
+    let user=await User.findById(req.params.id)
+    const{email,name,phoneNo,password,oldPassword}=req.body
+    if(user && (oldPassword && password)) {
+        if (await bcrypt.compare(oldPassword,user.password)){
+            let pass=await bcrypt.hash(password,10)
+            let change=await User.findByIdAndUpdate(req.params.id,{password:pass})
+            if(change){
 
-    const old=await User.findOne({email});
+                res.status(201).send("password has been updated")
+            }
+            else{
+                res.status(409).send('somthitg happen while changing')
+            }
+        }
+        else{
+            res.status(405).send('include valid old password')
+        }
 
-    if(old){
-       return res.status(409).send("user already exist")
     }
-    const find=await User.findById(req.params.id)
+    else if(user && name && email && phoneNo){
+        let change=await User.findByIdAndUpdate(req.params.id,{name:name,email:email,phoneNo:phoneNo})
+        if(change){
 
-    let pas;
-    if(oldPassword && password) {
-        if (find && (await bcrypt.compare(oldPassword, find.password))) {
-            pas = await bcrypt.hash(password, 10);
-            password=pas;
-        } else {
-            return res.status(409).send("check the password")
+            res.status(201).send("credential has been updated")
+        }
+        else{
+            res.status(409).send('somthitg happen while changing')
         }
     }
-    else if(oldPassword && !password){
-        return res.status(405).send("plz include newPassword")
-    }
+
     else{
-        return res.status(405).send("plz include oldPassword")
+        res.status(409).send('plz include somthing to chasnge')
     }
-    const user = await User.findByIdAndUpdate(req.params.id,{name,email,phoneNo,password})
-    if (!user) {
-       return res.status(404).json({
-            message:"no user found"
-        })
-    }
-    else{
-        res.status(200).json({
-            message:"done updating"
-        })
-    }
+
 }
+
 //for login
 exports.Login = async (req, res, next) => {
     const { email, password } = req.body;

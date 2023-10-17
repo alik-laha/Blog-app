@@ -1,37 +1,34 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import  './Read.css'
-import HandleFetch from "../../utils/handleFetch";
+// import HandleFetch from "../../utils/handleFetch";
+import {useQuery} from "@tanstack/react-query";
+// import axios from "axios";
 
 let Read=(props)=>{
-    const [Data,setData]=useState("alik")
-    const fetching = async ()=>{
-       let id=props.read;
-       if(id){
-           let result=await HandleFetch(`/api/v1/read/${id}`)
-           setData(result)
-       }
+    let m;
+        const url=window.location.href;
+         m=url.slice(27)
+    const{data,error,isError,isLoading}=useQuery(
+        ['data'],async ()=>await ((await fetch(`/api/v1/read/${m}`)).json())
+    )
+    if(isError){
+        return <h1> error occure while fetching{error}</h1>
     }
-    useEffect(() => {
-        fetching()
-    });
-    if(Data!=="alik"){
+    if(isLoading){
+        return<h1>loading......</h1>
+    }
         return(
             <>
                 <div className='main'>
-                <div className="contents">
-                    <h1 className='head'>{Data.data.header}</h1>
-                    <p className='writers'>{Data.data.writer}</p>
-                    <p className='cont'>{Data.data.content}</p>
+                    <div className="contents">
+                        <h1 className='head'>{data.data.header}</h1>
+                        <p className='writers'>{data.data.writer}</p>
+                        <p className='cont'>{data.data.content}</p>
+                    </div>
                 </div>
-                </div>
-
             </>
 
         )
-    }
-    else{
-        <p>somthing is bad plz go back and return again</p>
-    }
 
 }
 export default Read

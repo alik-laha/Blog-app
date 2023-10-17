@@ -2,7 +2,7 @@
     display: block;
     width: 100vw;
     height:6em;
-    background-color: rgb(237, 106, 231);
+    background-color:rgb(237, 106, 231);
 }
 ul{
     display:flex ;
@@ -38,7 +38,7 @@ li:hover{
     position: relative;
     top: 6em;
     left: 91vw;
-    background-color: red;
+   background-color: red;
 }
 #add{
     margin-bottom: 15px;

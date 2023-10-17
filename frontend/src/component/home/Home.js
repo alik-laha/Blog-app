@@ -24,7 +24,7 @@ let Home = (props) => {
     let Read=(id)=>{
         // console.log(id)
         props.onclick(id);
-        navigate('/read')
+        navigate(`/read?${id}`)
     }
     //calling the fetch function
     useEffect(() => {
@@ -43,7 +43,6 @@ let Home = (props) => {
                                     <h4 className="date">{i.date}</h4>
                                     <h2 className="subject">{i.subject}</h2>
                                 </div>
-
                             </div>
                         </>
                     )

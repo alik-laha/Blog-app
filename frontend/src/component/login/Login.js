@@ -19,7 +19,7 @@ let Login = () => {
 
     let checkData = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:7000/api/v1/login', { email, password })
+        axios.post('/api/v1/login', { email, password })
             .then((result) => {
                 if (result.data.token) {
                     localStorage.setItem("user",JSON.stringify(result.data))

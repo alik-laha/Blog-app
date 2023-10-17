@@ -9,6 +9,7 @@ import { useState} from 'react';
 import PrivateComponent from "./component/private/PrivateComp";
 import Searched from './component/search/Search'
 import Read from "./component/Read/Read";
+import Edit from "./component/EditProfile/editProfile";
 
 
 
@@ -32,10 +33,11 @@ let getId=(id)=>{
 
          <Routes>
              <Route element={<PrivateComponent/>}>
+                 <Route path='/update/user' element={<><Nav onkeydown={getData} /><Edit /></>  } />
                  <Route path='/search' element={<><Nav onkeydown={getData} /><Searched data={data} oncall={getId} /></> } />
                  <Route path='/' element={<><Nav onkeydown={getData} /><Body onclick={getId} /></> } />
                  <Route path='/add' element={<><Nav onkeydown={getData} /><ADD /></> } />
-                 <Route path='/read' element={<><Nav onkeydown={getData} /><Read read={Id} /></> } />
+                 <Route path='/read' element={<><Nav onkeydown={getData} /><Read read={Id}/></>} />
              </Route>
              <Route path='/sign-up' element={<Signup />} />
              <Route path='/log-in' element={ <Login />} />

@@ -5,7 +5,7 @@ import {useNavigate,NavLink} from "react-router-dom"
 
 let Signup = () => {
     const [name, setName] = useState("")
-    const [phoneNo, setPhoneNo] = useState("")
+    const [phoneNo, setPhoneNo] = useState()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirm, setConfirm] = useState("")
@@ -34,7 +34,7 @@ let Signup = () => {
         e.preventDefault();
         if(password===confirm) {
 
-            axios.post('http://127.0.0.1:7000/api/v1/sign-up', {name, phoneNo, email, password})
+            axios.post('/api/v1/sign-up', {name, phoneNo, email, password})
 
                 .then((result) => {
 
