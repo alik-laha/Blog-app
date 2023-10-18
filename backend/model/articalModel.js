@@ -19,13 +19,13 @@ const articalSchema = new mongoose.Schema({
         type: String,
         required: [true, "provide the subject of your artical"]
     },
+    writerId:{
+      type:String,
+      required:[true,"provide the writer id"]
+    },
     image: {
-        publicId: {
-            type: String,
-        },
-        url: {
-            type: String,
-        }
+       type:String,
+        // required:[true,"povide a image"]
     },
     date: {
         type: Date,

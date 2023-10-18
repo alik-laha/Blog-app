@@ -5,7 +5,7 @@
     border: 2px solid black;
     border-radius: 18px;
     padding: 20px;
-
+    background-color: aliceblue;
 }
 .main{
     width: 100vw;
@@ -13,7 +13,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("https://media.geeksforgeeks.org/wp-content/uploads/rk.png");
+    background-color: aquamarine;
+    /*background-image: url("https://media.geeksforgeeks.org/wp-content/uploads/rk.png");*/
 }
 .writers{
     margin-bottom: 2em;

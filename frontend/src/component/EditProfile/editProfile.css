@@ -1,39 +1,31 @@
-.update{
-    display: block;
-
-}
-#container{
-    width: 100vw;
+.box{
+    width: 20vw;
+    background-color: aquamarine;
     height: 89vh;
-    background: rgb(78,63,251);
+    position: absolute;
+    button:10px
+}
+li{
+    list-style: none;
+}
+.img{
+    width: 12vw;
+    height: 20vh;
+    border: 2px solid black;
+    margin:0;
+    border-radius: 50%;
+}
+.menu{
+    margin-top: 2em;
+    width: 15vw;
+    height: 5vh;
+    border: 1px solid blue;
+    margin-left: 0;
     display: flex;
-    background: radial-gradient(circle, rgba(78,63,251,0.6446953781512605) 12%, rgba(252,70,107,1) 80%);
     justify-content: center;
     align-items: center;
 }
-.lab{
-    font-size: 1.2em;
-}
-.contain{
-
-}
-.put{
-    margin-bottom: 1.1em;
-    width: 15rem;
-    /*height: 2.3em;*/
-    border-radius: 15px;
-    font-size: 1.3em;
-}
-.submit{
-    margin: auto;
-    width: 6em;
-    height: 2em;
-    font-size: 1.2em;
-    border-radius: 12px;
-}
-
-.submit:hover{
-    background-color: blue;
-    color: white;
+.dash{
+    font-size: 20px;
     font-weight: bolder;
 }

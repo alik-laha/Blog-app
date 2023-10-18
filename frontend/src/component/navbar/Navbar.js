@@ -42,20 +42,20 @@ let Nav = (props) => {
     return (
         <div className="whole">
             <div className="navbar">
-                <ul>
-                    <li id='home'>
+                <ul className="navi">
+                    <li id='home' className="to">
                         <NavLink to='/'>Home</NavLink>
                     </li>
-                    <li className='search' ><input type="text" name='search' placeholder='Search aricals' id='searching' onKeyDown={handleCh}  /></li>
+                    <li className='search to' ><input type="text" name='search' placeholder='Search aricals' id='searching' onKeyDown={handleCh}  /></li>
                     {/*<li className='searchButton'><FontAwesomeIcon icon={faMagnifyingGlass} /></li>*/}
-                    <li className='tripleDot' onClick={handale} ><FontAwesomeIcon icon={faBars} /></li>
+                    <li className='tripleDot to' onClick={handale} ><FontAwesomeIcon icon={faBars} /></li>
                 </ul>
                 <div className="float" style={{ display: display }}>
-                    <div id="add">
+                    <div  className="lo">
                         <NavLink to='/add' > Add artical</NavLink>
                     </div>
-                    <div className="Edit">
-                        Edit Profile
+                    <div className="lo">
+                        <NavLink to='/editProfile'>Edit Profile </NavLink>
                     </div>
                     <div className='lo'>
                         { auth? <NavLink onClick={logout} to='/sign-up'>Logout</NavLink> :

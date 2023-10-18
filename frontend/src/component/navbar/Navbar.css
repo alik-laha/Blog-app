@@ -4,18 +4,18 @@
     height:6em;
     background-color:rgb(237, 106, 231);
 }
-ul{
+.navi{
     display:flex ;
     float: right;
    
 }
-li{
+.to{
     margin-top: 20px;
     margin-right: 3em;
     font-size: 25px;
     list-style: none;
 }
-li:hover{
+.to:hover{
     background-color: black;
     color: white;
 }
@@ -40,11 +40,7 @@ li:hover{
     left: 91vw;
    background-color: red;
 }
-#add{
-    margin-bottom: 15px;
-    margin-top: 20px;
-    margin-left: 1.5em;
-}
+
 .Edit{
     margin-left: 1.5em;
     margin-bottom: 15px;
@@ -84,6 +80,7 @@ li:hover{
 .lo{
     display: block;
     text-align: center;
+    margin-top: 5px;
     margin-bottom: 15px;
 }
 .lo a{
@@ -101,7 +98,7 @@ li:hover{
     #searching{
         font-size: 20px;
     }
-    li{
+    .to{
         font-size: 20px;
     }
     .float{
@@ -144,11 +141,11 @@ li:hover{
         margin-top: 1.5em;
         font-size: 25px;
     }
-.lo{
-    display: block;
-    text-align: center;
-    margin-bottom: 1.5em;
-    margin-top: 1.5em;
-    font-size: 25px;
+    .lo{
+      display: block;
+      text-align: center;
+      margin-bottom: 1.5em;
+      margin-top: 1.5em;
+      font-size: 25px;
 }
 }

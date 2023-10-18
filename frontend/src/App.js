@@ -38,6 +38,7 @@ let getId=(id)=>{
                  <Route path='/' element={<><Nav onkeydown={getData} /><Body onclick={getId} /></> } />
                  <Route path='/add' element={<><Nav onkeydown={getData} /><ADD /></> } />
                  <Route path='/read' element={<><Nav onkeydown={getData} /><Read read={Id}/></>} />
+                 <Route path='/editProfile' element={<><Nav onkeydown={getData} /><Edit/>  </>}/>
              </Route>
              <Route path='/sign-up' element={<Signup />} />
              <Route path='/log-in' element={ <Login />} />

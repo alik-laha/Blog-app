@@ -8,11 +8,17 @@ let ADD = () => {
     const [writer, setWriter] = useState("")
     const [subject, setSubject] = useState("")
     const [content, setContent] = useState("")
+    const [writerId,setWriterId]=useState("")
+    const [image,setImage]=useState()
     let getHeader = (e) => {
         setHeader(e.target.value)
     }
     let getWriter = (e) => {
         setWriter(e.target.value)
+        let key=localStorage.getItem('user')
+        key=JSON.parse(key)
+        console.log(key._id)
+        setWriterId(key._id)
     }
     let getSubject = (e) => {
         setSubject(e.target.value)
@@ -23,7 +29,9 @@ let ADD = () => {
     let navigate= useNavigate()
     let newArtical = (e) => {
         e.preventDefault();
-        axios.post('http://127.0.0.1:7000/api/v1/artical/new', { header, writer, content, subject },{ headers: {Authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}` } })
+        const formdata=new FormData()
+        formdata.append("image",image)
+        axios.post('http://localhost:7000/api/v1/artical/new', { header, writer, content, subject,writerId})
             .then((result) => {
                 navigate('/')
             })
@@ -32,7 +40,10 @@ let ADD = () => {
             })
 
     }
-
+const fileupload=async (e)=>{
+  console.log(e.target.files[0])
+    setImage(e.target.files[0])
+}
     return (
         <div className="addArtical">
             <div className="container">
@@ -43,7 +54,7 @@ let ADD = () => {
                         <input type="text" className="Add" id="subject" name="subject" placeholder="Subject of Writing" value={subject} onChange={getSubject} />
                     </div>
                     <textarea name="content" className="Add" id="text" cols="70" rows="25" value={content} onChange={getContent} placeholder="content" ></textarea>
-                    <input type="file" name="images" id="img" className="Add" />
+                    <input type="file" name="images" id="img" className="Add" accept='.jpeg,.png,.jpg'onChange={fileupload} />
                     <input type="submit" placeholder="Submit" className="Add" id="sub" />
                 </form>
             </div>
@@ -52,5 +63,4 @@ let ADD = () => {
 }
 
 export default ADD;
-
 

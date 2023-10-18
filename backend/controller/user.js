@@ -107,3 +107,14 @@ exports.Login = async (req, res, next) => {
         return res.status(400).json("invalid cradentials")
     }
 }
+
+exports.getuser=async (req,res,next)=>{
+    try {
+        const data = await User.findById(req.params.id)
+
+    }
+    catch{
+
+    }
+
+}

@@ -53,6 +53,8 @@ let Signup = () => {
             console.log("check the password")
         }
     }
+
+
     useEffect(() => {
         const auth=localStorage.getItem('user');
         if(auth){

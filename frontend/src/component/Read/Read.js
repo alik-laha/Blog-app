@@ -2,7 +2,7 @@ import React from "react";
 import  './Read.css'
 // import HandleFetch from "../../utils/handleFetch";
 import {useQuery} from "@tanstack/react-query";
-// import axios from "axios";
+import axios from "axios";
 
 let Read=(props)=>{
     let m;

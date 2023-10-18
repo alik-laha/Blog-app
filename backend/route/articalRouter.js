@@ -1,11 +1,12 @@
 const express = require('express');
 const { createArtical, updateArtical, DeleteArtical, getAllData, search, getOne} = require('../controller/artical');
 const Varify =require('../config/auth')
-
+const multer =require('multer')
+const upload=multer({dest:"uploads/"})
 const router = express.Router();
 
 //creat a artical--(every one)
-router.post('/artical/new',Varify,createArtical);
+router.post('/artical/new',upload.single("image"),createArtical);
 
 //delete a artical---(auther)
 router.delete('/artical/:id',Varify,DeleteArtical);
