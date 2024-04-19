@@ -2,15 +2,14 @@ import "./editProfile.css"
 import React from "react";
 import Side from "./SideBar"
 
-let Edit=()=>{
+let Edit = () => {
 
 
-    return(
+    return (
         <>
-            <Side/>
-        <div>
-
-        </div>
-       </> )
+            <Side />
+            <div>
+            </div>
+        </>)
 }
 export default Edit

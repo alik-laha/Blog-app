@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken')
 exports.creatUser = async (req, res) => {
     try {
         const { name, email, phoneNo, password } = req.body;
-        if (!(email, phoneNo, name , password)) {
+        if (!(email, phoneNo, name, password)) {
             res.status(400).send("all input is required")
         }
         const old = await User.findOne({ email })
@@ -43,37 +43,37 @@ exports.creatUser = async (req, res) => {
 
 //update user details--(only user)
 exports.updateUser = async (req, res, next) => {
-    let user=await User.findById(req.params.id)
-    const{email,name,phoneNo,password,oldPassword}=req.body
-    if(user && (oldPassword && password)) {
-        if (await bcrypt.compare(oldPassword,user.password)){
-            let pass=await bcrypt.hash(password,10)
-            let change=await User.findByIdAndUpdate(req.params.id,{password:pass})
-            if(change){
+    let user = await User.findById(req.params.id)
+    const { email, name, phoneNo, password, oldPassword } = req.body
+    if (user && (oldPassword && password)) {
+        if (await bcrypt.compare(oldPassword, user.password)) {
+            let pass = await bcrypt.hash(password, 10)
+            let change = await User.findByIdAndUpdate(req.params.id, { password: pass })
+            if (change) {
 
                 res.status(201).send("password has been updated")
             }
-            else{
+            else {
                 res.status(409).send('somthitg happen while changing')
             }
         }
-        else{
+        else {
             res.status(405).send('include valid old password')
         }
 
     }
-    else if(user && name && email && phoneNo){
-        let change=await User.findByIdAndUpdate(req.params.id,{name:name,email:email,phoneNo:phoneNo})
-        if(change){
+    else if (user && name && email && phoneNo) {
+        let change = await User.findByIdAndUpdate(req.params.id, { name: name, email: email, phoneNo: phoneNo })
+        if (change) {
 
             res.status(201).send("credential has been updated")
         }
-        else{
+        else {
             res.status(409).send('somthitg happen while changing')
         }
     }
 
-    else{
+    else {
         res.status(409).send('plz include somthing to chasnge')
     }
 
@@ -83,18 +83,18 @@ exports.updateUser = async (req, res, next) => {
 exports.Login = async (req, res, next) => {
     const { email, password } = req.body;
 
-    if(!(email && password)){
+    if (!(email && password)) {
 
         res.status(400).send("need all information")
     }
-    const user =await User.findOne({email})
+    const user = await User.findOne({ email })
 
-    if (user &&(await bcrypt.compare(password,user.password))){
+    if (user && (await bcrypt.compare(password, user.password))) {
 
         const token = jwt.sign({ user_id: user._id, email }, process.env.TOKEN_KEY, {
 
-                expiresIn: "5h"
-            }
+            expiresIn: "5h"
+        }
         );
 
         user.token = token
@@ -102,19 +102,59 @@ exports.Login = async (req, res, next) => {
         return res.status(200).send(user)
 
     }
-    else{
+    else {
 
         return res.status(400).json("invalid cradentials")
     }
 }
 
-exports.getuser=async (req,res,next)=>{
+exports.getuser = async (req, res, next) => {
     try {
         const data = await User.findById(req.params.id)
 
     }
-    catch{
+    catch {
 
     }
 
+}
+
+exports.ForgotPassword = async (req, res, next) => {
+    const { password, newPassword } = req.body
+    if (!password && !newPassword && !req.params.id) {
+        return res.status(400).send('plz provide email')
+    }
+    try {
+        let id = req.params.id
+        id = JSON.stringify(id)
+        const user = await User.findById(id)
+        if (!user) {
+            return res.status(404).send('user not found')
+        }
+        const pass = await bcrypt.compare(password, user.password)
+        if (pass) {
+            const pass = await bcrypt.compare(newPassword, user.password)
+            if (pass) {
+                return res.status(409).send('password is same as old')
+            }
+            else {
+                let pass = await bcrypt.hash(newPassword, 10)
+                let change = await User.findByIdAndUpdate(req.params.id, { password: pass })
+                if (change) {
+                    return res.status(201).send("password has been updated")
+                }
+                else {
+                    return res.status(409).send('somthitg happen while changing')
+                }
+            }
+        }
+
+    }
+    catch (error) {
+        res.status(403).json({
+            success: false,
+            message: "An error occurred while creating the Profile",
+            error: error.message
+        });
+    }
 }

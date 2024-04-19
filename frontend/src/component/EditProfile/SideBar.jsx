@@ -8,21 +8,18 @@ let logout=()=>{
     navigate('/sign-up')
 }
 
+const changePass=()=>{
+    navigate('/change-password')
+}
     return(
         <>
             <div className='box' >
                 <ul>
-                    <li className="img side">
-                        image
-                    </li>
-                    <li className="menu side">
-                       <p className="dash board">Dashboard</p>
-                    </li>
                     <li className="menu side">
                         <p className="dash account">Account Detail</p>
                     </li>
 
-                    <li className="menu side">
+                    <li className="menu side" onClick={changePass}>
                         <p className="dash change">Change Password</p>
                     </li>
 
